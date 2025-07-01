@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: average-calculator
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn average_calculator.wsgi
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: average_calculator.settings
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: DEBUG
+        value: False

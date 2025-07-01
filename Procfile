@@ -1,0 +1,1 @@
+web: cd average_calculator && gunicorn average_calculator.wsgi

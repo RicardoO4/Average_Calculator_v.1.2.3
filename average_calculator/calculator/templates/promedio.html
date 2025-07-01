@@ -1,0 +1,57 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Promedio de notas</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+    <nav><h1>Promedio de notas<img id="app-icon" src="{% static '1355663.png' %}"></h1></nav>
+
+
+    <h2>Coloca tus notas aquí<img id="mano" src="{% static '10186991.png' %}"></h2>
+    <div id="notas">
+    <div class="fila">
+    <input type="text" class="nota" name="grades" placeholder="Ingrese la nota" ">
+    <input type="text" class="porcentaje" name="weights" placeholder="%"  required>
+    <br><br>
+    </div>
+    <div class="fila">
+    <input type="text" class="nota" name="grades" placeholder="Ingrese la nota"  ">
+    <input type="text" class="porcentaje" name="weights" placeholder="%"  " required>
+    <br><br>
+    </div>
+    <div class="fila">
+    <input type="text" class="nota" name="grades" placeholder="Ingrese la nota"  ">
+    <input type="text" class="porcentaje" name="weights" placeholder="%"   required>
+    <br><br>
+    </div>
+    
+    
+    </div>
+    <button id="agregar" type="button">Agregar Nota<span class="material-icons">add</span></button> 
+    <br><br>
+    
+    <button id="calcular" type="submit" name="action" value="calculate"><span class="material-icons" id="calcular-icono">functions</span>Calcular Promedio</button>
+    <button id="need-grade" type="submit" name="action" value="needed-grade"><span class="material-icons" id="need-grade-icono">check_circle</span>Nota Necesaria</button>
+
+    <script src="{% static 'script.js' %}"></script>
+
+</form>
+
+{% if result %}
+<br>
+<div class="resultado">
+    <span class="material-icons resultado-icono">info</span>
+    <h3 id="resultados">{{ result }}</h3>
+{% endif %}
+</div>
+</body>
+</html>
